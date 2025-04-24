@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { SiwsIdentityProvider } from 'ic-siws-js/svelte';
   import { SolanaConnect } from 'solana-connect';
   import { canisterId } from '../../ic_siws_provider/declarations/index';
+  import { init as initSiws, siws } from 'ic-siws-js/svelte';
+  import { get } from 'svelte/store';
 
   import Header from './components/Header.svelte';
   import SolanaPubKey from './components/SolanaPubKey.svelte';
@@ -11,16 +12,22 @@
   import Footer from './components/Footer.svelte';
 
   const solConnect = new SolanaConnect();
+ 
+  // Initialize the siws library with the id of the provider canister
+  initSiws(canisterId);
+
+  // For this demo, logout the user on init to enforce the login flow to be
+  // fully run every time the app is run. 
+  get(siws).clear();
+
 </script>
 
-<SiwsIdentityProvider {canisterId}>
-  <Header />
-  <div class="container">
-    <SolanaPubKey />
-    <IcIdentity />
-    <ConnectButton {solConnect}/>
-    <SignInButton />
-  </div>
-  <Footer />
-</SiwsIdentityProvider>
+<Header />
+<div class="container">
+  <SolanaPubKey />
+  <IcIdentity />
+  <ConnectButton {solConnect}/>
+  <SignInButton />
+</div>
+<Footer />
 

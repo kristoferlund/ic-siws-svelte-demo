@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { useSiws } from 'ic-siws-js/svelte';
-  const siws = useSiws();
+  import { siws } from 'ic-siws-js/svelte';
 </script>
 
 {#if $siws.identity}

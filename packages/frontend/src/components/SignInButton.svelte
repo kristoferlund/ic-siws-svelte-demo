@@ -1,9 +1,7 @@
 <script lang="ts">
   import { get } from 'svelte/store';
-  import { useSiws } from 'ic-siws-js/svelte';
   import { adapterStore } from '../stores/adapter';
-
-  const siws = useSiws();
+  import { siws } from 'ic-siws-js/svelte';
 
   function login() {
     get(siws).login();
