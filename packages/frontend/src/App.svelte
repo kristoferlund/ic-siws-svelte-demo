@@ -15,11 +15,6 @@
  
   // Initialize the siws library with the id of the provider canister
   initSiws(canisterId);
-
-  // For this demo, logout the user on init to enforce the login flow to be
-  // fully run every time the app is run. 
-  get(siws).clear();
-
 </script>
 
 <Header />

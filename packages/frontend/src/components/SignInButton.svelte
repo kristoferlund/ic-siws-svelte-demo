@@ -12,29 +12,33 @@
   }
 </script>
 
-{#if $adapterStore && !$siws.identity}
-  <button
-    id="loginButton"
-    on:click={login}
-    disabled={$siws.isPreparingLogin || $siws.isLoggingIn || $siws.signMessageStatus === 'pending'}
-  >
-    {#if $siws.isPreparingLogin}
-      Preparing…
-    {:else if $siws.isLoggingIn}
-      Logging in…
-    {:else if $siws.signMessageStatus === 'pending'}
-      Signing…
-    {:else}
-      Login
-    {/if}
-  </button>
-{/if}
+{#if $adapterStore}
 
-{#if $siws.identity}
-  <button
-    id="logoutButton"
-    on:click={logout}
-  >
-    Logout
-  </button>
+  {#if !$siws.identity}
+    <button
+      id="loginButton"
+      on:click={login}
+      disabled={$siws.isPreparingLogin || $siws.isLoggingIn || $siws.signMessageStatus === 'pending'}
+    >
+      {#if $siws.isPreparingLogin}
+        Preparing…
+      {:else if $siws.isLoggingIn}
+        Logging in…
+      {:else if $siws.signMessageStatus === 'pending'}
+        Signing…
+      {:else}
+        Login
+      {/if}
+    </button>
+  {/if}
+
+  {#if $siws.identity}
+    <button
+      id="logoutButton"
+      on:click={logout}
+    >
+      Logout
+    </button>
+  {/if}
+
 {/if}
