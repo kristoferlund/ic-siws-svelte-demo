@@ -22,7 +22,7 @@ you get a fully authenticated crossâ€‘chain dapp where a Solana wallet maps oneâ
 
 ## Live Demo
 
-Try it live: <https://eb4mc-mqaaa-aaaal-qsmwq-cai.icp0.io>
+Try it live: <https://ghe6p-faaaa-aaaal-qsm3q-cai.icp0.io>
 
 ## App components
 
